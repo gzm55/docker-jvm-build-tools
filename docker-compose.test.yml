@@ -1,6 +1,0 @@
-sut:
-  build: alpine-oracle-cpu-8
-  command:
-    - mvn -version
-    - ant -version
-    - sbt -h
