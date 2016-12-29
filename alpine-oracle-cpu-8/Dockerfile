@@ -47,6 +47,6 @@ RUN set -eux \
     && rm -rf $SBT_HOME/bin/*.bat \
 
     ## cleanup
-    && apk del --no-cache .build-dependencies
+    && apk  del --no-cache .build-dependencies
 
 VOLUME /root/.m2/repository /root/.ivy2 /root/.sbt
