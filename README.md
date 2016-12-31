@@ -37,3 +37,10 @@ it is build from release tags.
 - latest
 - latest-alpine-oracle-8
 - latest-alpine-oracle-8-psu
+
+Volumes
+--
+
+- /root/.m2/repository
+- /root/.ivy2
+- /root/.sbt
