@@ -3,7 +3,7 @@ Docker images with common java building tools.
 
 Current Version
 --
-0.1.x
+0.1.1-SNAPSHOT
 
 Base Images
 --
