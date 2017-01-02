@@ -1,7 +1,7 @@
 FROM jeanblanchard/java:jdk-8u111
 
 ENV MAVEN_VERSION=3.3.9 M2_HOME=/opt/maven \
-    ANT_VERSION=1.9.7 ANT_HOME=/opt/ant \
+    ANT_VERSION=1.10.0 ANT_HOME=/opt/ant \
     IVY_VERSION=2.4.0 \
     SBT_VERSION=0.13.13 SBT_HOME=/opt/sbt \
     PATH=$PATH:/opt/maven/bin:/opt/ant/bin:/opt/sbt/bin
