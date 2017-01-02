@@ -40,11 +40,14 @@ RUN set -eux \
     && rm -rf apache-ivy-$IVY_VERSION \
 
     ## Install sbt at $SBT_HOME/lib, sbt launch scripts need bash
+    ## use curl --insecure option to work round the buggy ca cert of bintray.com
     && apk add --no-cache bash \
     && mkdir -p $SBT_HOME \
-    && curl -L https://dl.bintray.com/sbt/native-packages/sbt/$SBT_VERSION/sbt-$SBT_VERSION.tgz \
-     | tar xzf - -C $SBT_HOME --strip-components=1 \
-    && rm -rf $SBT_HOME/bin/*.bat \
+    && curl -L --insecure -o sbt.tgz https://dl.bintray.com/sbt/native-packages/sbt/$SBT_VERSION/sbt-$SBT_VERSION.tgz \
+    && echo "40d03d21a260c5a6a43f8349298f41c9d047f97972057d9d915afd8945faf979  sbt.tgz" \
+     | sha256sum -c - \
+    && tar xzf sbt.tgz -C $SBT_HOME --strip-components=1 \
+    && rm -rf $SBT_HOME/bin/*.bat sbt.tgz \
 
     ## cleanup
     && apk del --no-cache .build-dependencies
