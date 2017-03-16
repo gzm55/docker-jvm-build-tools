@@ -1,7 +1,7 @@
-FROM jeanblanchard/java:jdk-8u112
+FROM jeanblanchard/java:jdk-8u121
 
 ENV MAVEN_VERSION=3.3.9 M2_HOME=/opt/maven \
-    ANT_VERSION=1.10.0 ANT_HOME=/opt/ant \
+    ANT_VERSION=1.10.1 ANT_HOME=/opt/ant \
     IVY_VERSION=2.4.0 \
     SBT_VERSION=0.13.13 SBT_HOME=/opt/sbt \
     PATH=$PATH:/opt/maven/bin:/opt/ant/bin:/opt/sbt/bin
@@ -25,7 +25,7 @@ RUN set -eux \
     ## install maven extensions: takari-local-repository, takari-filemanager, takari-smart-builder
     && wget -P $M2_HOME/lib/ext https://repo.maven.apache.org/maven2/io/takari/aether/takari-local-repository/0.11.2/takari-local-repository-0.11.2.jar \
     && wget -P $M2_HOME/lib/ext https://repo.maven.apache.org/maven2/io/takari/takari-filemanager/0.8.3/takari-filemanager-0.8.3.jar \
-    && wget -P $M2_HOME/lib/ext https://repo.maven.apache.org/maven2/io/takari/maven/takari-smart-builder/0.4.1/takari-smart-builder-0.4.1.jar \
+    && wget -P $M2_HOME/lib/ext https://repo.maven.apache.org/maven2/io/takari/maven/takari-smart-builder/0.5.0/takari-smart-builder-0.5.0.jar \
 
     ## Install ant at $ANT_HOME
     && mkdir -p $ANT_HOME \
