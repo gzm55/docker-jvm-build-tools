@@ -1,3 +1,0 @@
-sut:
-  build: .
-  command: bash -c "mvn -version && ant -version && sbt -h | grep sbt-jar"

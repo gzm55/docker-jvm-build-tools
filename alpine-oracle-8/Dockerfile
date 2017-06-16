@@ -1,9 +1,9 @@
-FROM jeanblanchard/java:jdk-8u121
+FROM jeanblanchard/java:jdk-8u131
 
-ENV MAVEN_VERSION=3.3.9 M2_HOME=/opt/maven \
+ENV MAVEN_VERSION=3.5.0 M2_HOME=/opt/maven \
     ANT_VERSION=1.10.1 ANT_HOME=/opt/ant \
     IVY_VERSION=2.4.0 \
-    SBT_VERSION=0.13.13 SBT_HOME=/opt/sbt \
+    SBT_VERSION=0.13.15 SBT_HOME=/opt/sbt \
     PATH=$PATH:/opt/maven/bin:/opt/ant/bin:/opt/sbt/bin
 
 RUN set -eux \
@@ -11,7 +11,7 @@ RUN set -eux \
 
     ## Install maven at $M2_HOME
     && mkdir -p $M2_HOME \
-    && curl -L https://www.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz \
+    && curl -L https://www.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz \
      | tar xzf - -C $M2_HOME --strip-components=1 \
     && rm -rf $M2_HOME/bin/*.cmd \
 
@@ -25,7 +25,7 @@ RUN set -eux \
     ## install maven extensions: takari-local-repository, takari-filemanager, takari-smart-builder
     && wget -P $M2_HOME/lib/ext https://repo.maven.apache.org/maven2/io/takari/aether/takari-local-repository/0.11.2/takari-local-repository-0.11.2.jar \
     && wget -P $M2_HOME/lib/ext https://repo.maven.apache.org/maven2/io/takari/takari-filemanager/0.8.3/takari-filemanager-0.8.3.jar \
-    && wget -P $M2_HOME/lib/ext https://repo.maven.apache.org/maven2/io/takari/maven/takari-smart-builder/0.5.0/takari-smart-builder-0.5.0.jar \
+    && wget -P $M2_HOME/lib/ext https://repo.maven.apache.org/maven2/io/takari/maven/takari-smart-builder/0.6.0/takari-smart-builder-0.6.0.jar \
 
     ## Install ant at $ANT_HOME
     && mkdir -p $ANT_HOME \
@@ -44,7 +44,7 @@ RUN set -eux \
     && apk add --no-cache bash \
     && mkdir -p $SBT_HOME \
     && curl -L --insecure -o sbt.tgz https://dl.bintray.com/sbt/native-packages/sbt/$SBT_VERSION/sbt-$SBT_VERSION.tgz \
-    && echo "40d03d21a260c5a6a43f8349298f41c9d047f97972057d9d915afd8945faf979  sbt.tgz" \
+    && echo "b6e073d7c201741dcca92cfdd1dd3cd76c42a47dc9d8c8ead8df7117deed7aef  sbt.tgz" \
      | sha256sum -c - \
     && tar xzf sbt.tgz -C $SBT_HOME --strip-components=1 \
     && rm -rf $SBT_HOME/bin/*.bat sbt.tgz \
