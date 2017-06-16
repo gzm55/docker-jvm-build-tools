@@ -47,7 +47,7 @@ RUN set -eux \
     && echo "b6e073d7c201741dcca92cfdd1dd3cd76c42a47dc9d8c8ead8df7117deed7aef  sbt.tgz" \
      | sha256sum -c - \
     && tar xzf sbt.tgz -C $SBT_HOME --strip-components=1 \
-    && rm -rf $SBT_HOME/bin/*.bat sbt.tgz \
+    && rm -rf $SBT_HOME/bin/*.bat $SBT_HOME/lib/local-preloaded sbt.tgz \
 
     ## cleanup
     && apk del --no-cache .build-dependencies
