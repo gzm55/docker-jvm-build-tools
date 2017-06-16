@@ -3,7 +3,7 @@ Docker images with common java building tools.
 
 Current Version
 --
-0.4.0-dev
+0.4.0
 
 Base Images
 --
@@ -35,6 +35,10 @@ it is build from release tags.
 
 - latest
 - latest-alpine-oracle-8
+- 0.4
+- 0.4-alpine-oracle-8
+- 0.3
+- 0.3-alpine-oracle-8
 
 Volumes
 --
