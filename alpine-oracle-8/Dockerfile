@@ -25,7 +25,7 @@ RUN set -eux \
     ## install maven extensions: takari-local-repository, takari-filemanager, takari-smart-builder
     && wget -P $M2_HOME/lib/ext https://repo.maven.apache.org/maven2/io/takari/aether/takari-local-repository/0.11.2/takari-local-repository-0.11.2.jar \
     && wget -P $M2_HOME/lib/ext https://repo.maven.apache.org/maven2/io/takari/takari-filemanager/0.8.3/takari-filemanager-0.8.3.jar \
-    && wget -P $M2_HOME/lib/ext https://repo.maven.apache.org/maven2/io/takari/maven/takari-smart-builder/0.6.0/takari-smart-builder-0.6.0.jar \
+    && wget -P $M2_HOME/lib/ext https://repo.maven.apache.org/maven2/io/takari/maven/takari-smart-builder/0.5.0/takari-smart-builder-0.5.0.jar \
 
     ## Install ant at $ANT_HOME
     && mkdir -p $ANT_HOME \
