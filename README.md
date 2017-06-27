@@ -21,7 +21,7 @@ Compoments
 - maven extension
   - takari-local-repository 0.11.2
   - takari-filemanager 0.8.3
-  - takari-smart-builder 0.6.0
+  - takari-smart-builder 0.6.1
 - ant 1.10.1
 - ivy 2.4.0
 - sbt 0.13.15 (depend on bash, not bootstrap)
