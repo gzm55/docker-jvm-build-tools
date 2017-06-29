@@ -8,13 +8,13 @@ Current Version
 Base Images
 --
 
-- alpine 3.5 + oracle jdk 8 8u131
+- alpine 3.6 + oracle jdk 8 8u131
 
 Compoments
 --
 
 ### OS + JDK
-- alpine (3.5) + oracle jdk (8u131) + dependent glibc 2.25-r0
+- alpine (3.6) + oracle jdk (8u131) + dependent glibc 2.25-r0
 
 ### building tools
 - maven 3.5.0
