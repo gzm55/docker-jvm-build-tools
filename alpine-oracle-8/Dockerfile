@@ -42,7 +42,7 @@ RUN set -eux \
     ## Install sbt at $SBT_HOME/lib, sbt launch scripts need bash
     && apk add --no-cache bash \
     && mkdir -p $SBT_HOME \
-    && curl -L -o sbt.tgz https://github.com/sbt/sbt/releases/download/v$SBT_VERSION/sbt-$SBT_VERSION.tgz \
+    && curl -L https://github.com/sbt/sbt/releases/download/v$SBT_VERSION/sbt-$SBT_VERSION.tgz \
      | tar xzf - -C $SBT_HOME --strip-components=1 \
     && rm -rf $SBT_HOME/bin/*.bat $SBT_HOME/lib/local-preloaded sbt.tgz \
 
