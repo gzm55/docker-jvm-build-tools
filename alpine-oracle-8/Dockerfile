@@ -1,9 +1,9 @@
-FROM jeanblanchard/java:jdk-8u131
+FROM jeanblanchard/java:jdk-8u151
 
-ENV MAVEN_VERSION=3.5.0 M2_HOME=/opt/maven \
+ENV MAVEN_VERSION=3.5.2 M2_HOME=/opt/maven \
     ANT_VERSION=1.10.1 ANT_HOME=/opt/ant \
     IVY_VERSION=2.4.0 \
-    SBT_VERSION=0.13.15 SBT_HOME=/opt/sbt \
+    SBT_VERSION=1.0.3 SBT_HOME=/opt/sbt \
     PATH=$PATH:/opt/maven/bin:/opt/ant/bin:/opt/sbt/bin
 
 RUN set -eux \
@@ -40,13 +40,10 @@ RUN set -eux \
     && rm -rf apache-ivy-$IVY_VERSION \
 
     ## Install sbt at $SBT_HOME/lib, sbt launch scripts need bash
-    ## use curl --insecure option to work round the buggy ca cert of bintray.com
     && apk add --no-cache bash \
     && mkdir -p $SBT_HOME \
-    && curl -L --insecure -o sbt.tgz https://dl.bintray.com/sbt/native-packages/sbt/$SBT_VERSION/sbt-$SBT_VERSION.tgz \
-    && echo "b6e073d7c201741dcca92cfdd1dd3cd76c42a47dc9d8c8ead8df7117deed7aef  sbt.tgz" \
-     | sha256sum -c - \
-    && tar xzf sbt.tgz -C $SBT_HOME --strip-components=1 \
+    && curl -L -o sbt.tgz https://github.com/sbt/sbt/releases/download/v$SBT_VERSION/sbt-$SBT_VERSION.tgz \
+     | tar xzf - -C $SBT_HOME --strip-components=1 \
     && rm -rf $SBT_HOME/bin/*.bat $SBT_HOME/lib/local-preloaded sbt.tgz \
 
     ## cleanup
