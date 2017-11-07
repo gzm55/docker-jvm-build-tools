@@ -35,6 +35,8 @@ it is build from release tags.
 
 - latest
 - latest-alpine-oracle-8
+- 0.5
+- 0.5-alpine-oracle-8
 - 0.4
 - 0.4-alpine-oracle-8
 - 0.3
