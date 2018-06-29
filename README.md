@@ -3,28 +3,28 @@ Docker images with common java building tools.
 
 Current Version
 --
-0.5.0
+0.6.0
 
 Base Images
 --
 
-- alpine 3.6 + oracle jdk 8 8u151
+- alpine 3.7 + oracle jdk 8 8u171
 
 Compoments
 --
 
 ### OS + JDK
-- alpine (3.6) + oracle jdk (8u151) + dependent glibc 2.26-r0
+- alpine (3.7) + oracle jdk (8u171) + dependent glibc 2.27-r0
 
 ### building tools
-- maven 3.5.2
+- maven 3.5.4
 - maven extension
   - takari-local-repository 0.11.2
   - takari-filemanager 0.8.3
   - takari-smart-builder 0.6.1
-- ant 1.10.1
+- ant 1.10.4
 - ivy 2.4.0
-- sbt 1.0.3 (depend on bash, not bootstrap)
+- sbt 1.1.6 (depend on bash, not bootstrap)
 
 Supported Tags
 --
@@ -46,5 +46,6 @@ Volumes
 --
 
 - /root/.m2/repository
+- /root/.m2/wrapper
 - /root/.ivy2
 - /root/.sbt

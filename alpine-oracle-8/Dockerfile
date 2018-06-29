@@ -1,9 +1,9 @@
-FROM jeanblanchard/java:jdk-8u151
+FROM jeanblanchard/java:jdk-8u171
 
-ENV MAVEN_VERSION=3.5.2 M2_HOME=/opt/maven \
-    ANT_VERSION=1.10.1 ANT_HOME=/opt/ant \
+ENV MAVEN_VERSION=3.5.4 M2_HOME=/opt/maven \
+    ANT_VERSION=1.10.4 ANT_HOME=/opt/ant \
     IVY_VERSION=2.4.0 \
-    SBT_VERSION=1.0.3 SBT_HOME=/opt/sbt \
+    SBT_VERSION=1.1.6 SBT_HOME=/opt/sbt \
     PATH=$PATH:/opt/maven/bin:/opt/ant/bin:/opt/sbt/bin
 
 RUN set -eux \
@@ -14,13 +14,6 @@ RUN set -eux \
     && curl -L https://www.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz \
      | tar xzf - -C $M2_HOME --strip-components=1 \
     && rm -rf $M2_HOME/bin/*.cmd \
-
-    ## support maven-wrapper
-    ## maintain two directory references for downloading from urls of maven central repos by maven-wrapper
-    && mkdir -p /root/.m2/wrapper/dists/apache-maven-$MAVEN_VERSION-bin/2609u9g41na2l7ogackmif6fj2 \
-    && ln -s $M2_HOME /root/.m2/wrapper/dists/apache-maven-$MAVEN_VERSION-bin/2609u9g41na2l7ogackmif6fj2/apache-maven-$MAVEN_VERSION \
-    && mkdir -p /root/.m2/wrapper/dists/apache-maven-$MAVEN_VERSION-bin/2bef7dbss28mt21g2pltev5241 \
-    && ln -s $M2_HOME /root/.m2/wrapper/dists/apache-maven-$MAVEN_VERSION-bin/2bef7dbss28mt21g2pltev5241/apache-maven-$MAVEN_VERSION \
 
     ## install maven extensions: takari-local-repository, takari-filemanager, takari-smart-builder
     && wget -P $M2_HOME/lib/ext https://repo.maven.apache.org/maven2/io/takari/aether/takari-local-repository/0.11.2/takari-local-repository-0.11.2.jar \
@@ -49,4 +42,4 @@ RUN set -eux \
     ## cleanup
     && apk del --no-cache .build-dependencies
 
-VOLUME /root/.m2/repository /root/.ivy2 /root/.sbt
+VOLUME /root/.m2/repository /root/.m2/wrapper /root/.ivy2 /root/.sbt
